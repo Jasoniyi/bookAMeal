@@ -1,4 +1,4 @@
-import uuid from 'uuid/v3';
+import uuid from 'uuid';
 import moment from 'moment';
 
 class Meal {
@@ -15,7 +15,7 @@ class Meal {
      */
     create(data) {
         const newMeal = {
-            id: uuid.v3(),
+            id: uuid.v1(),
             size: data.size || '',
             price: data.price || '',
             name: data.name || ''

@@ -10,7 +10,7 @@ const Meal = {
         if(!req.body.name && !req.body.size && !req.body.price) {
             return res.status(400).send({'message':'All fields are required'})
         }
-        const meal = mealModel.create(req.body);
+        const meal = MealModel.create(req.body);
         return res.status(201).send(meal);
     },
     /**
@@ -57,10 +57,10 @@ const Meal = {
     deleteMeal(req, res) {
         const meal = MealModel.findOne(req.params.name);
         if(!meal) {
-            return res.status(404).send({'mesage': 'Meal not found'})
+            return res.status(404).send({'mesage': 'Meal not found'});
         }
-        const meal = MealModel.deleteMeal(req.params.name);
-        return res.status(200).send(meal);
+        const meals = MealModel.deleteMeal(req.params.name);
+        return res.status(200).send({'message':`${req.params.name} deleted`});
     }
 }
 
