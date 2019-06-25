@@ -7,7 +7,7 @@ const Meal = {
      * @return {object} meal object
      */
     create(req, res) {
-        if(!req.body.name && !req.body.size && !req.body.price) {
+        if(!req.body.name || !req.body.size || !req.body.price) {
             return res.status(400).send({'message':'All fields are required'})
         }
         const meal = MealModel.create(req.body);
@@ -57,7 +57,7 @@ const Meal = {
     deleteMeal(req, res) {
         const meal = MealModel.findOne(req.params.name);
         if(!meal) {
-            return res.status(404).send({'mesage': 'Meal not found'});
+            return res.status(404).send({'message': 'Meal not found'});
         }
         const meals = MealModel.deleteMeal(req.params.name);
         return res.status(200).send({'message':`${req.params.name} deleted`});

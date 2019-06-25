@@ -1,5 +1,5 @@
 import uuid from 'uuid';
-import moment from 'moment';
+
 
 class Meal {
     /**
@@ -16,9 +16,9 @@ class Meal {
     create(data) {
         const newMeal = {
             id: uuid.v1(),
-            size: data.size || '',
-            price: data.price || '',
-            name: data.name || ''
+            size: data.size,
+            price: data.price,
+            name: data.name 
         };
         this.meals.push(newMeal);
         return newMeal
